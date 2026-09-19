@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  /* -- Colors ------------------------------------- */
+  --color-maroon-50:  #fdf2f4;
+  --color-maroon-100: #fce7eb;
+  --color-maroon-200: #fad0d8;
+  --color-maroon-500: #a81c3c;
+  --color-maroon-600: #8c112e;
+  --color-maroon-700: #730d25;
+  --color-maroon-800: #5c0a1d;
+  --color-maroon-900: #450615;
+  --color-maroon-950: #2b030c;
+
+  --color-saffron-50:  #fffaf0;
+  --color-saffron-100: #feeecc;
+  --color-saffron-200: #fcdda0;
+  --color-saffron-400: #f6a838;
+  --color-saffron-500: #ea580c;
+  --color-saffron-600: #d97706;
+  --color-saffron-700: #b45309;
+  --color-saffron-800: #92400e;
+  --color-saffron-900: #78350f;
+
+  --color-gold-300: #fde047;
+  --color-gold-400: #facc15;
+  --color-gold-500: #eab308;
+  --color-gold-600: #ca8a04;
+  --color-gold-700: #a16207;
+  --color-gold-800: #854d0e;
+
+  --color-sand-50:  #fdfcf9;
+  --color-sand-100: #f9f6ef;
+  --color-sand-200: #f2ece0;
+  --color-sand-300: #e6dcce;
+  --color-sand-400: #d4c4ae;
+  --color-sand-500: #b8a48e;
+  --color-sand-600: #96816a;
+  --color-sand-700: #725e4a;
+  --color-sand-800: #2c2724;
+  --color-sand-900: #1e1a17;
+  --color-sand-950: #14110e;
+
+  /* -- Fonts -------------------------------------- */
+  --font-family-serif: "Cinzel", "Playfair Display", Georgia, serif;
+  --font-family-sans:  "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+  --font-family-mono:  ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Aliases used in JSX */
+  --font-family-display: "Cinzel", "Playfair Display", Georgia, serif;
+
+  /* -- Shadows ------------------------------------ */
+  --shadow-royal:    0 10px 30px -5px rgba(115,13,37,0.15), 0 4px 12px -2px rgba(234,88,12,0.10);
+  --shadow-royal-lg: 0 20px 40px -10px rgba(115,13,37,0.25), 0 8px 20px -4px rgba(234,88,12,0.15);
+  --shadow-xs:       0 1px 3px 0 rgba(0,0,0,0.08);
+}
+
+/* -- Base ------------------------------------------- */
+@layer base {
+  body {
+    background-color: #fdfbf7;
+    color: #26201a;
+    font-family: var(--font-family-sans);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-family-serif);
+    letter-spacing: -0.01em;
+  }
+
+  .font-display {
+    font-family: var(--font-family-serif) !important;
+  }
+
+  .font-serif {
+    font-family: var(--font-family-serif) !important;
+  }
+
+  .font-sans {
+    font-family: var(--font-family-sans) !important;
+  }
+}
+
+/* -- Custom Utilities ------------------------------- */
+.bg-mandala {
+  background-color: #fdfbf7;
+  background-image:
+    radial-gradient(#d97706 0.75px, transparent 0.75px),
+    radial-gradient(#8c112e 0.75px, #fdfbf7 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  opacity: 0.06;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 40%, #ca8a04 70%, #92400e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.maroon-gradient-text {
+  background: linear-gradient(135deg, #730d25 0%, #991b1b 50%, #450615 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226,214,196,0.6);
+}
+
+.glass-card-dark {
+  background: rgba(43,3,12,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(217,119,6,0.25);
+}
+
+/* -- Scrollbar -------------------------------------- */
+::-webkit-scrollbar       { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #f4ede0; }
+::-webkit-scrollbar-thumb { background: #d97706; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #b45309; }
+
+/* -- Print (receipt) ------------------------------- */
+@media print {
+  body * { visibility: hidden; }
+  #printable-receipt, #printable-receipt * { visibility: visible; }
+  #printable-receipt {
+    position: absolute; left: 0; top: 0;
+    width: 100%; margin: 0; padding: 20px;
+  }
+}
